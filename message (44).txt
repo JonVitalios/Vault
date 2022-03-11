@@ -1,0 +1,106 @@
+
+(nil)(nil, "\n")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))().new("Racemodex's aimlock", 1):addPage("Racemodex", 1):addSection("Racemodex"):addSlider("Delay", 15, -15, 100, function(a)
+  a = a
+  va = a * 0,002
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))().new("Racemodex's aimlock", 1):addPage("Racemodex", 1):addSection("Racemodex"):addToggle("Aimlock", nil, function(a)
+  a = a
+  va = a
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))().new("Racemodex's aimlock", 1):addPage("Racemodex", 1):addSection("Racemodex"):addToggle("Fake Recoil", nil, function(a)
+  a = a
+  va = a
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))().new("Racemodex's aimlock", 1):addPage("Racemodex", 1):addSection("Racemodex"):addKeybind("Aimlock Keybind", Enum.KeyCode.B, function()
+  if va then
+    if vc ~= nil then
+      vc = nil
+      if vd then
+        vd:Destroy()
+      end
+    else
+      if ve == "Torso" then
+        vc = vb().Character.HumanoidRootPart
+      else
+        vc = vb().Character.Head
+      end
+      if vc then
+        if vd then
+          vd:Destroy()
+        end
+        vd = Instance.new("SelectionBox")
+        if ve == "Torso" then
+          vd.Adornee = vc.Parent.UpperTorso
+          vd.Parent = vc.Parent.UpperTorso
+        else
+          vd.Adornee = vc.Parent.Head
+          vd.Parent = vc.Parent.Head
+        end
+        vd.Color3 = vg
+      end
+      vh:Notify("New Target", vc.Parent.Name)
+    end
+  end
+end, function()
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))().new("Racemodex's aimlock", 1):addPage("Racemodex", 1):addSection("Racemodex"):addKeybind("Hide Gui", Enum.KeyCode.H, function()
+  va:toggle()
+end, function()
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))().new("Racemodex's aimlock", 1):addPage("Racemodex", 1):addSection("Racemodex"):addColorPicker("Box Color", Color3.new(1, 0, 0), function(a)
+  a = a
+  va = a
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))().new("Racemodex's aimlock", 1):addPage("Racemodex", 1):addSection("Racemodex"):addDropdown("Part", {"Head", "Torso"}, function(a)
+  a = a
+  va = a
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))().new("Racemodex's aimlock", 1):SelectPage(loadstring(game:HttpGet("https://raw.githubusercontent.com/GreenDeno/Venyx-UI-Library/main/source.lua"))().new("Racemodex's aimlock", 1).pages[1], true)
+game:GetService("RunService").RenderStepped:connect(function()
+  if va and vb then
+    if 30 <= va.Parent.Humanoid.Health and va.Parent.Humanoid.MoveDirection ~= Vector3.new(0, 0, 0) and 16 >= va.Parent.Humanoid.WalkSpeed and va.Parent.Humanoid.FloorMaterial ~= Enum.Material.Air then
+      vc = va.Position + va.Velocity * (0,145 + vd)
+    elseif 30 > va.Parent.Humanoid.Health and va.Parent.Humanoid.MoveDirection ~= Vector3.new(0, 0, 0) and 16 >= va.Parent.Humanoid.WalkSpeed and va.Parent.Humanoid.FloorMaterial ~= Enum.Material.Air then
+      vc = va.Position + va.Velocity * (0,115 + vd)
+    elseif 30 <= va.Parent.Humanoid.Health and va.Parent.Humanoid.MoveDirection ~= Vector3.new(0, 0, 0) and 16 >= va.Parent.Humanoid.WalkSpeed and va.Parent.Humanoid.FloorMaterial == Enum.Material.Air then
+      if 0 < va.Position.Y - workspace:FindPartOnRay(Ray.new(va.Position, Vector3.new(0, -50, 0)), va.Parent, true, false).Y - 1 then
+      else
+      end
+      vc = Vector3.new(va.Position.X, 4, va.Position.Z) + Vector3.new(va.Velocity.X, 0, va.Velocity.Z) * (0,1 + vd)
+    elseif 30 > va.Parent.Humanoid.Health and va.Parent.Humanoid.MoveDirection ~= Vector3.new(0, 0, 0) and 16 >= va.Parent.Humanoid.WalkSpeed and va.Parent.Humanoid.FloorMaterial == Enum.Material.Air then
+      if 0 < va.Position.Y - workspace:FindPartOnRay(Ray.new(va.Position, Vector3.new(0, -50, 0)), va.Parent, true, false).Y - 1 then
+      else
+      end
+      vc = Vector3.new(va.Position.X, 4, va.Position.Z) + Vector3.new(va.Velocity.X, 0, va.Velocity.Z) * (0,085 + vd)
+    elseif va.Parent.Humanoid.MoveDirection == Vector3.new(0, 0, 0) and va.Parent.Humanoid.FloorMaterial ~= Enum.Material.Air then
+      vc = va.Position
+    elseif va.Parent.Humanoid.MoveDirection == Vector3.new(0, 0, 0) and va.Parent.Humanoid.FloorMaterial == Enum.Material.Air then
+      if 0 < va.Position.Y - workspace:FindPartOnRay(Ray.new(va.Position, Vector3.new(0, -50, 0)), va.Parent, true, false).Y - 0,8 then
+      else
+      end
+      vc = Vector3.new(va.Position.X, 3, va.Position.Z) + Vector3.new(va.Velocity.X, 0, va.Velocity.Z)
+    else
+      vc = va.Position + va.Velocity * (0,135 + vd)
+    end
+    ve = game.Players.LocalPlayer:GetMouse().Hit.p
+  end
+end)
+setreadonly(getrawmetatable(game), false)
+getrawmetatable(game).__namecall = newcclosure(function(a, ...)
+  a = a
+  if getnamecallmethod() == "FireServer" and tostring({
+    ...
+  }[1]) == "UpdateMousePos" and va and vb then
+    if vc then
+      return ve(a, unpack({
+        ...
+      }))
+    else
+      return ve(a, unpack({
+        ...
+      }))
+    end
+  end
+  return ve(a, ...)
+end)
